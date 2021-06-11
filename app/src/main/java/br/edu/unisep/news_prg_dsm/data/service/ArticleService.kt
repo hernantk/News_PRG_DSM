@@ -9,9 +9,11 @@ interface ArticleService {
 
 
     @GET(WS_GET_LIST)
-    suspend fun getList(
-        @Path(PARAM_DATE) date:String,
-        @Query(PARAM_API_KEY) apiKey: String = API_KEY_VALUE
+    suspend fun getNews(
+            @Query(PARAM_SEARCH) search: String = SEARCH_VALUE,
+            @Query(PARAM_FROM) date: String = DATE_VALUE,
+            @Query(PARAM_SORT) sortBy: String = SORT_VALUE,
+            @Query(PARAM_API_KEY) apiKey: String = API_KEY_VALUE
     ): ArticleList
 
 }

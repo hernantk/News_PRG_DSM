@@ -15,7 +15,8 @@
     </style>
 
     <style name="Title">
-        <item name="android:textSize">26sp</item>
+        <item name="android:textSize">23sp</item>
         <item name="android:textStyle">italic</item>
+        <item name="android:textAlignment">center</item>
     </style>
 </resources>

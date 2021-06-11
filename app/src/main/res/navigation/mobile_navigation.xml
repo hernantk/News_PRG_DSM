@@ -11,11 +11,6 @@
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
-    <fragment
-        android:id="@+id/navigation_search"
-        android:name="br.edu.unisep.news_prg_dsm.ui.search.SearchFragment"
-        android:label="@string/title_search"
-        tools:layout="@layout/fragment_search" />
 
     <fragment
         android:id="@+id/navigation_mostSearch"

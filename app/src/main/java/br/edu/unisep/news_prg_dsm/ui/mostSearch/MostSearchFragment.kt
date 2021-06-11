@@ -22,7 +22,7 @@ class MostSearchFragment : Fragment() {
         mostSearchViewModel =
                 ViewModelProvider(this).get(MostSearchViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_mostsearch, container, false)
-        val textView: TextView = root.findViewById(R.id.text_notifications)
+        val textView: TextView = root.findViewById(R.id.idImage)
         mostSearchViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })

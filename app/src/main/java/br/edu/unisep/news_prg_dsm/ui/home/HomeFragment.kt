@@ -1,31 +1,74 @@
 package br.edu.unisep.news_prg_dsm.ui.home
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import br.edu.unisep.news_prg_dsm.R
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
+import androidx.recyclerview.widget.LinearLayoutManager
+import br.edu.unisep.news_prg_dsm.databinding.FragmentHomeBinding
+import br.edu.unisep.news_prg_dsm.domain.dto.ArticleDto
+import br.edu.unisep.news_prg_dsm.ui.home.adapter.HomeAdapter
 
 class HomeFragment : Fragment() {
 
-    private lateinit var homeViewModel: HomeViewModel
+    private val binding: FragmentHomeBinding by lazy {
+        FragmentHomeBinding.inflate(layoutInflater)
+    }
+
+    private val viewModel: HomeViewModel by viewModels()
+
+    private lateinit var adapter: HomeAdapter
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
-    ): View? {
-        homeViewModel =
-                ViewModelProvider(this).get(HomeViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+    ) = binding.root
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+        setupView()
+        setupListeners()
     }
+
+
+    private fun setupView() {
+        adapter = HomeAdapter()
+        adapter.onImageClick = ::onImageClick
+
+        viewModel.getNews()
+        binding.rvArticle.adapter = adapter
+        binding.rvArticle.layoutManager = LinearLayoutManager(requireContext())
+    }
+
+    private fun setupListeners() {
+        viewModel.newsResult.observe(viewLifecycleOwner,::onArticleResult)
+
+        binding.srlArticle.setOnRefreshListener { viewModel.getNews() }
+
+    }
+
+    private fun onImageClick(article : ArticleDto){
+        val intentReview = Intent(
+                Intent.ACTION_VIEW, Uri.parse(article.url)
+        )
+        startActivity(intentReview)
+
+    }
+
+    private fun onArticleResult(article: List<ArticleDto>){
+        adapter.article = article
+        binding.srlArticle.isRefreshing = false
+        binding.srlArticle.visibility = View.VISIBLE
+
+    }
+
+
 }
