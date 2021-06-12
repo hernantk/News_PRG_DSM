@@ -14,7 +14,7 @@
 
     <fragment
         android:id="@+id/navigation_mostSearch"
-        android:name="br.edu.unisep.news_prg_dsm.ui.mostSearch.MostSearchFragment"
+        android:name="br.edu.unisep.news_prg_dsm.ui.sources.SourcesFragment"
         android:label="@string/title_mostSearch"
-        tools:layout="@layout/fragment_mostsearch" />
+        tools:layout="@layout/fragment_sources" />
 </navigation>

@@ -6,7 +6,6 @@
         android:icon="@drawable/ic_home_black_24dp"
         android:title="@string/title_home" />
 
-
     <item
         android:id="@+id/navigation_mostSearch"
         android:icon="@drawable/ic_trending_up_24"

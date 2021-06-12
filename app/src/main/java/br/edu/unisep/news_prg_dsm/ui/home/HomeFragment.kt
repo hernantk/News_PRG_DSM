@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import br.edu.unisep.news_prg_dsm.databinding.FragmentHomeBinding
 import br.edu.unisep.news_prg_dsm.domain.dto.ArticleDto
 import br.edu.unisep.news_prg_dsm.ui.home.adapter.HomeAdapter
+import br.edu.unisep.timesbooks.utils.hideKeyboard
 
 class HomeFragment : Fragment() {
 
@@ -36,16 +37,22 @@ class HomeFragment : Fragment() {
 
         setupView()
         setupListeners()
+
+
     }
 
 
     private fun setupView() {
         adapter = HomeAdapter()
-        adapter.onImageClick = ::onImageClick
+        adapter.onTitleClick = ::onTitleClick
 
         viewModel.getNews()
         binding.rvArticle.adapter = adapter
         binding.rvArticle.layoutManager = LinearLayoutManager(requireContext())
+        binding.btnSearch.setOnClickListener{onSearchClick()}
+
+
+
     }
 
     private fun setupListeners() {
@@ -55,11 +62,19 @@ class HomeFragment : Fragment() {
 
     }
 
-    private fun onImageClick(article : ArticleDto){
-        val intentReview = Intent(
+    private fun onSearchClick(){
+        binding.tvSearch.hideKeyboard()
+        viewModel.getNewsBySearch(binding.tvSearch.text.toString())
+
+
+
+    }
+
+    private fun onTitleClick(article : ArticleDto){
+        val intent = Intent(
                 Intent.ACTION_VIEW, Uri.parse(article.url)
         )
-        startActivity(intentReview)
+        startActivity(intent)
 
     }
 

@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">News_PRG_DSM</string>
     <string name="title_home">Home</string>
-    <string name="title_search">Buscar</string>
-    <string name="title_mostSearch">Mais Procurados</string>
+    <string name="title_mostSearch">Sites Procurados</string>
 </resources>
