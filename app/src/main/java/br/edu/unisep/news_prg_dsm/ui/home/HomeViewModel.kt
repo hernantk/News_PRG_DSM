@@ -30,4 +30,12 @@ class HomeViewModel : ViewModel() {
         }
     }
 
+    fun getNewsByCategory(category:String) {
+        viewModelScope.launch {
+            val result = respository.getNewsByCategory(category)
+
+            newsResult.postValue(result)
+        }
+    }
+
 }

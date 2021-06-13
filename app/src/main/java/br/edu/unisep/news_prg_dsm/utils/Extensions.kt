@@ -12,4 +12,6 @@ fun EditText.hideKeyboard() {
         windowToken,
         InputMethodManager.RESULT_UNCHANGED_SHOWN
     )
+
 }
+

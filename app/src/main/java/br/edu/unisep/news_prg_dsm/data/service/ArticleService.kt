@@ -21,6 +21,13 @@ interface ArticleService {
             @Query(PARAM_API_KEY) apiKey: String = API_KEY_VALUE
     ): ArticleList
 
+    @GET(WS_GET_NEWS_TOP_HEADLINES)
+    suspend fun getNewsByCategory(
+        @Query(PARAM_CATEGORY) caregory:String,
+        @Query(PARAM_COUNTRY) country:String = COUNTRY_VALUE,
+        @Query(PARAM_API_KEY) apiKey: String = API_KEY_VALUE
+    ): ArticleList
+
     @GET(WS_GET_SOURCES_BR)
     suspend fun getSources(
             @Query(PARAM_COUNTRY) country:String = COUNTRY_VALUE,

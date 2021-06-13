@@ -11,10 +11,11 @@ const val WS_GET_NEWS_TOP_HEADLINES = "top-headlines"
 const val WS_GET_SOURCES_BR = "sources"
 
 
+
 const val PARAM_API_KEY = "apikey"
 const val PARAM_SEARCH = "q"
 const val PARAM_SORT = "sortBy"
 const val PARAM_COUNTRY = "country"
-const val PARAM_LANGUAGE = "language"
+const val PARAM_CATEGORY = "category"
 
 

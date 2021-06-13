@@ -15,7 +15,6 @@ class Repository {
 
         val response = service.getNews()
 
-
         return response.articles.map{ article ->
         ArticleDto(
 
@@ -37,6 +36,19 @@ class Repository {
                     article.description,
                     article.url,
                     article.image
+            )}
+    }
+    suspend fun getNewsByCategory(category:String): List<ArticleDto> {
+
+        val response = service.getNewsByCategory(category)
+
+        return response.articles.map{ article ->
+            ArticleDto(
+                article.author,
+                article.title,
+                article.description,
+                article.url,
+                article.image
             )}
     }
     suspend fun getSources(): List<SourcesDto> {
