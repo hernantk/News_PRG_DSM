@@ -63,7 +63,12 @@ class HomeFragment : Fragment() {
                 viewModel.getNewsByCategory("technology")
             }
             R.id.btnS ->{
-                searchVisible()
+                if(binding.tvSearch.visibility==View.VISIBLE){
+                    searchGone()
+                }
+                else{
+                    searchVisible()
+                }
             }
         }
 
@@ -109,7 +114,6 @@ class HomeFragment : Fragment() {
     private fun onArticleResult(article: List<ArticleDto>){
         adapter.article = article
         binding.srlArticle.isRefreshing = false
-        searchGone()
 
     }
 
@@ -121,6 +125,7 @@ class HomeFragment : Fragment() {
     private fun searchVisible(){
         binding.btnSearch.visibility = View.VISIBLE
         binding.tvSearch.visibility = View.VISIBLE
+
     }
 
 
