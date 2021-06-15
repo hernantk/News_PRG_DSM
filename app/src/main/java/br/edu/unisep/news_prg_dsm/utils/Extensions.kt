@@ -1,9 +1,15 @@
 package br.edu.unisep.timesbooks.utils
 
-import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+
+const val NEWS_SCIENCE = "science"
+const val NEWS_BUSINESS = "business"
+const val NEWS_HEALTH = "health"
+const val NEWS_SPORTS = "sports"
+const val NEWS_TECHNOLOGY = "technology"
+
 
 fun EditText.hideKeyboard() {
     val inputManager =
@@ -12,6 +18,8 @@ fun EditText.hideKeyboard() {
         windowToken,
         InputMethodManager.RESULT_UNCHANGED_SHOWN
     )
-
+    
 }
+
+
 

@@ -29,6 +29,7 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
 
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
         holder.bind(article[position],onTitleClick)
+
     }
 
     override fun getItemCount() = article.size
@@ -39,7 +40,9 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
 
 
 
+
         fun bind(article: ArticleDto, onTitleClick: (ArticleDto) -> Unit) {
+
             bindingItem.tvTitle.text = article.title
             bindingItem.tvAuthor.text = article.author
             bindingItem.tvNews.text = article.description

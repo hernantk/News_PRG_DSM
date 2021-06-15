@@ -7,12 +7,13 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.edu.unisep.news_prg_dsm.R
 import br.edu.unisep.news_prg_dsm.databinding.FragmentHomeBinding
 import br.edu.unisep.news_prg_dsm.domain.dto.ArticleDto
 import br.edu.unisep.news_prg_dsm.ui.home.adapter.HomeAdapter
-import br.edu.unisep.timesbooks.utils.hideKeyboard
+import br.edu.unisep.timesbooks.utils.*
 
 class HomeFragment : Fragment() {
 
@@ -39,7 +40,6 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
-
         setupView()
         setupListeners()
 
@@ -48,19 +48,24 @@ class HomeFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.science -> {
-                viewModel.getNewsByCategory("science")
+                viewModel.getNewsByCategory(NEWS_SCIENCE)
+                binding.rvArticle.scrollToPosition(0)
             }
             R.id.business -> {
-                viewModel.getNewsByCategory("business")
+                viewModel.getNewsByCategory(NEWS_BUSINESS)
+                binding.rvArticle.scrollToPosition(0)
             }
             R.id.health -> {
-                viewModel.getNewsByCategory("health")
+                viewModel.getNewsByCategory(NEWS_HEALTH)
+                binding.rvArticle.scrollToPosition(0)
             }
             R.id.sports -> {
-                viewModel.getNewsByCategory("sports")
+                viewModel.getNewsByCategory(NEWS_SPORTS)
+                binding.rvArticle.scrollToPosition(0)
             }
             R.id.technology -> {
-                viewModel.getNewsByCategory("technology")
+                viewModel.getNewsByCategory(NEWS_TECHNOLOGY)
+                binding.rvArticle.scrollToPosition(0)
             }
             R.id.btnS ->{
                 if(binding.tvSearch.visibility==View.VISIBLE){
@@ -70,6 +75,7 @@ class HomeFragment : Fragment() {
                     searchVisible()
                 }
             }
+
         }
 
         return true
@@ -78,7 +84,6 @@ class HomeFragment : Fragment() {
     private fun setupView() {
         adapter = HomeAdapter()
         adapter.onTitleClick = ::onTitleClick
-
 
         viewModel.getNews()
         binding.rvArticle.adapter = adapter
@@ -95,11 +100,11 @@ class HomeFragment : Fragment() {
 
     }
 
+
     private fun onSearchClick(){
         binding.tvSearch.hideKeyboard()
         viewModel.getNewsBySearch(binding.tvSearch.text.toString())
-
-
+        binding.rvArticle.scrollToPosition(0)
 
     }
 
