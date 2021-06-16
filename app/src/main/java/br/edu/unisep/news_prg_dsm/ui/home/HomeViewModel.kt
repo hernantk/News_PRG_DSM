@@ -9,14 +9,14 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel : ViewModel() {
 
-    private val respository = Repository()
+    private val repository = Repository()
 
 
     val newsResult: MutableLiveData<List<ArticleDto>> = MutableLiveData()
 
     fun getNews() {
         viewModelScope.launch {
-            val result = respository.getNews()
+            val result = repository.getNewsTopHeadlines()
 
             newsResult.postValue(result)
         }
@@ -24,7 +24,7 @@ class HomeViewModel : ViewModel() {
 
     fun getNewsBySearch(search:String) {
         viewModelScope.launch {
-            val result = respository.getNewsBySearch(search)
+            val result = repository.getNewsBySearch(search)
 
             newsResult.postValue(result)
         }
@@ -32,7 +32,7 @@ class HomeViewModel : ViewModel() {
 
     fun getNewsByCategory(category:String) {
         viewModelScope.launch {
-            val result = respository.getNewsByCategory(category)
+            val result = repository.getNewsTopHeadlinesByCategory(category)
 
             newsResult.postValue(result)
         }

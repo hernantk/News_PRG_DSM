@@ -11,9 +11,9 @@ class Repository {
 
     private val service = ArticleServiceFactory.getService()
 
-    suspend fun getNews(): List<ArticleDto> {
+    suspend fun getNewsTopHeadlines(): List<ArticleDto> {
 
-        val response = service.getNews()
+        val response = service.getNewsTopHeadlines(null)
 
         return response.articles.map{ article ->
         ArticleDto(
@@ -38,9 +38,9 @@ class Repository {
                     article.image
             )}
     }
-    suspend fun getNewsByCategory(category:String): List<ArticleDto> {
+    suspend fun getNewsTopHeadlinesByCategory(category:String): List<ArticleDto> {
 
-        val response = service.getNewsByCategory(category)
+        val response = service.getNewsTopHeadlines(category)
 
         return response.articles.map{ article ->
             ArticleDto(
