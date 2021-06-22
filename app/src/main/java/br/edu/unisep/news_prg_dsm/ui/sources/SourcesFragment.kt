@@ -12,8 +12,9 @@ import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.edu.unisep.news_prg_dsm.databinding.FragmentSourcesBinding
 import br.edu.unisep.news_prg_dsm.domain.dto.SourcesDto
-import br.edu.unisep.news_prg_dsm.ui.sources.SourcesViewModel
 import br.edu.unisep.news_prg_dsm.ui.sources.adapter.SourcesAdapter
+import org.koin.android.ext.android.inject
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class SourcesFragment : Fragment() {
 
@@ -21,9 +22,9 @@ class SourcesFragment : Fragment() {
         FragmentSourcesBinding.inflate(layoutInflater)
     }
 
-    private val viewModel: SourcesViewModel by viewModels()
+    private val viewModel: SourcesViewModel by viewModel()
 
-    private lateinit var adapter: SourcesAdapter
+    private val adapter: SourcesAdapter by inject()
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -43,7 +44,6 @@ class SourcesFragment : Fragment() {
 
 
     private fun setupView() {
-        adapter = SourcesAdapter()
         adapter.onNameClick = ::onNameClick
 
         viewModel.getSources()

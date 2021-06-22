@@ -7,5 +7,6 @@ data class ArticleDto(
     val title: String?,
     val description: String?,
     val url: String?,
-    val image: String?
+    val image: String?,
+    val date: String?
 )

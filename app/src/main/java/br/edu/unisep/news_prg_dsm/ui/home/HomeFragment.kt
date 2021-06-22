@@ -7,23 +7,27 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.edu.unisep.news_prg_dsm.R
 import br.edu.unisep.news_prg_dsm.databinding.FragmentHomeBinding
 import br.edu.unisep.news_prg_dsm.domain.dto.ArticleDto
 import br.edu.unisep.news_prg_dsm.ui.home.adapter.HomeAdapter
 import br.edu.unisep.timesbooks.utils.*
+import org.koin.android.ext.android.inject
+import org.koin.android.viewmodel.ext.android.viewModel
 
+@Suppress("DEPRECATION")
 class HomeFragment : Fragment() {
 
     private val binding: FragmentHomeBinding by lazy {
         FragmentHomeBinding.inflate(layoutInflater)
     }
 
-    private val viewModel: HomeViewModel by viewModels()
 
-    private lateinit var adapter: HomeAdapter
+
+    private val viewModel: HomeViewModel by viewModel()
+
+    private val adapter: HomeAdapter by inject()
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -43,7 +47,9 @@ class HomeFragment : Fragment() {
         setupView()
         setupListeners()
 
+
     }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
@@ -68,11 +74,11 @@ class HomeFragment : Fragment() {
                 binding.rvArticle.scrollToPosition(0)
             }
             R.id.btnS ->{
-                if(binding.tvSearch.visibility==View.VISIBLE){
-                    searchGone()
+                if(binding.searchBar.visibility==View.VISIBLE){
+                    binding.searchBar.visibility = View.GONE
                 }
                 else{
-                    searchVisible()
+                    binding.searchBar.visibility = View.VISIBLE
                 }
             }
 
@@ -82,15 +88,12 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupView() {
-        adapter = HomeAdapter()
         adapter.onTitleClick = ::onTitleClick
 
         viewModel.getNews()
         binding.rvArticle.adapter = adapter
         binding.rvArticle.layoutManager = LinearLayoutManager(requireContext())
         binding.btnSearch.setOnClickListener{onSearchClick()}
-
-
     }
 
     private fun setupListeners() {
@@ -122,16 +125,6 @@ class HomeFragment : Fragment() {
 
     }
 
-    private fun searchGone(){
-        binding.btnSearch.visibility = View.GONE
-        binding.tvSearch.visibility = View.GONE
-    }
-
-    private fun searchVisible(){
-        binding.btnSearch.visibility = View.VISIBLE
-        binding.tvSearch.visibility = View.VISIBLE
-
-    }
 
 
 }

@@ -46,6 +46,7 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
             bindingItem.tvTitle.text = article.title
             bindingItem.tvAuthor.text = article.author
             bindingItem.tvNews.text = article.description
+            bindingItem.tvPublishedDate.text = article.date
 
             bindingItem.tvTitle.setOnClickListener { onTitleClick(article) }
 

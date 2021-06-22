@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "801703746734",
+    "project_id": "exemplofirebase2021-hernan",
+    "storage_bucket": "exemplofirebase2021-hernan.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:801703746734:android:0e2924927723b4b0d6a13f",
+        "android_client_info": {
+          "package_name": "br.edu.unisep.news_prg_dsm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "801703746734-8jb579sata0ultid9i65pl9aqr8a4sa3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWY4jr2YddbpG8umtEG5-jJ01hvBJZjS8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "801703746734-8jb579sata0ultid9i65pl9aqr8a4sa3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

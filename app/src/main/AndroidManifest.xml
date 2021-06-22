@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="br.edu.unisep.news_prg_dsm">
+    package="br.edu.unisep.news_prg_dsm" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -10,10 +10,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.News_PRG_DSM">
+        android:theme="@style/Theme.News_PRG_DSM"
+        android:name=".app.NewsApp">
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

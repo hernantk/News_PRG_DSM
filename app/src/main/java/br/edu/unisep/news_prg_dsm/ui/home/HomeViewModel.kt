@@ -4,12 +4,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.edu.unisep.news_prg_dsm.domain.dto.ArticleDto
-import br.edu.unisep.news_prg_dsm.domain.repository.Repository
+import br.edu.unisep.news_prg_dsm.domain.repository.NewsRepository
 import kotlinx.coroutines.launch
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(private val repository :NewsRepository) : ViewModel() {
 
-    private val repository = Repository()
 
 
     val newsResult: MutableLiveData<List<ArticleDto>> = MutableLiveData()
