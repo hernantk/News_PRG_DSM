@@ -11,4 +11,9 @@
         android:icon="@drawable/ic_trending_up_24"
         android:title="@string/title_mostSearch" />
 
+    <item
+        android:id="@+id/navigation_football"
+        android:icon="@drawable/ic_baseline_sports_soccer_24"
+        android:title="@string/title_footBall" />
+
 </menu>

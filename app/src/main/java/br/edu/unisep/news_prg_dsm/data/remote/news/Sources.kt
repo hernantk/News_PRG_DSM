@@ -1,4 +1,4 @@
-package br.edu.unisep.news_prg_dsm.data.remote
+package br.edu.unisep.news_prg_dsm.data.remote.news
 
 import androidx.annotation.Nullable
 import com.squareup.moshi.Json

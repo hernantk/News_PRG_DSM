@@ -2,20 +2,18 @@
     <string name="app_name">NewsH</string>
     <string name="title_home">Home</string>
     <string name="title_mostSearch">Sites Procurados</string>
-    <string name="title_activity_menu_type_headlines">menu_type_headlines</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
-
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="title_footBall">Futebol Placar</string>
 
 
 
-    <string name="show_more">Mostrar Mais</string>
-    <string name="t_noticia">Titulo da Noticia</string>
+    <string name="title_news">Titulo da Noticia</string>
+    <string name="title_description_news">djsakldjsalkdjsakjdlkasjdlkasjlkdsajlkdjsalkdjsalkdjsalkdsakjdlksajdlksajdlksajdlksajdgfdgfdgfdgdfgdfgdfgfdgdfgfdgfdgdfgdffdgfdgdfgdfgfdgdf</string>
+    <string name="title_autor_news">Autor</string>
+    <string name="label_published">Publicado em : %s</string>
+
+
+
+    <string name="title_score_football">0</string>
+    <string name="title_team_football">FC Bragantino RB</string>
+
 </resources>

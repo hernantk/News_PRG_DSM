@@ -1,16 +1,15 @@
-package br.edu.unisep.news_prg_dsm.ui.home
+    package br.edu.unisep.news_prg_dsm.ui.home
 
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.edu.unisep.news_prg_dsm.R
 import br.edu.unisep.news_prg_dsm.databinding.FragmentHomeBinding
-import br.edu.unisep.news_prg_dsm.domain.dto.ArticleDto
+import br.edu.unisep.news_prg_dsm.domain.dto.news.ArticleDto
 import br.edu.unisep.news_prg_dsm.ui.home.adapter.HomeAdapter
 import br.edu.unisep.timesbooks.utils.*
 import org.koin.android.ext.android.inject
@@ -55,23 +54,19 @@ class HomeFragment : Fragment() {
         when(item.itemId){
             R.id.science -> {
                 viewModel.getNewsByCategory(NEWS_SCIENCE)
-                binding.rvArticle.scrollToPosition(0)
             }
             R.id.business -> {
                 viewModel.getNewsByCategory(NEWS_BUSINESS)
-                binding.rvArticle.scrollToPosition(0)
             }
             R.id.health -> {
                 viewModel.getNewsByCategory(NEWS_HEALTH)
-                binding.rvArticle.scrollToPosition(0)
             }
             R.id.sports -> {
                 viewModel.getNewsByCategory(NEWS_SPORTS)
-                binding.rvArticle.scrollToPosition(0)
             }
             R.id.technology -> {
                 viewModel.getNewsByCategory(NEWS_TECHNOLOGY)
-                binding.rvArticle.scrollToPosition(0)
+
             }
             R.id.btnS ->{
                 if(binding.searchBar.visibility==View.VISIBLE){
@@ -83,7 +78,7 @@ class HomeFragment : Fragment() {
             }
 
         }
-
+        binding.rvArticle.scrollToPosition(0)
         return true
     }
 

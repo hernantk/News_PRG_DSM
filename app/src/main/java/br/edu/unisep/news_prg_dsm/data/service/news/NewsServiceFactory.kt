@@ -1,7 +1,5 @@
-package br.edu.unisep.news_prg_dsm.data.service.factory
+package br.edu.unisep.news_prg_dsm.data.service.news
 
-import br.edu.unisep.news_prg_dsm.data.service.NewsService
-import br.edu.unisep.news_prg_dsm.data.service.URL_BASE
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -14,7 +12,7 @@ object NewsServiceFactory {
         .build()
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl(URL_BASE)
+        .baseUrl(URL_BASE_NEWS)
         .client(httpClient)
         .addConverterFactory(MoshiConverterFactory.create())
         .build()

@@ -1,4 +1,4 @@
-package br.edu.unisep.news_prg_dsm.domain.dto
+package br.edu.unisep.news_prg_dsm.domain.dto.news
 
 
 data class ArticleDto(

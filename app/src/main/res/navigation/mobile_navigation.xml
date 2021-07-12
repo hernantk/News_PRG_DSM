@@ -17,4 +17,13 @@
         android:name="br.edu.unisep.news_prg_dsm.ui.sources.SourcesFragment"
         android:label="@string/title_mostSearch"
         tools:layout="@layout/fragment_sources" />
+
+    <fragment
+        android:id="@+id/navigation_football"
+        android:name="br.edu.unisep.news_prg_dsm.ui.football.MatchHomeFragment"
+        android:label="@string/title_footBall"
+        tools:layout="@layout/fragment_football" />
+
+
+
 </navigation>

@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.edu.unisep.news_prg_dsm.R
 import br.edu.unisep.news_prg_dsm.databinding.ItemSourcesBinding
-import br.edu.unisep.news_prg_dsm.domain.dto.SourcesDto
+import br.edu.unisep.news_prg_dsm.domain.dto.news.SourcesDto
 
 class SourcesAdapter : RecyclerView.Adapter<SourcesAdapter.SourcesViewHolder>() {
 

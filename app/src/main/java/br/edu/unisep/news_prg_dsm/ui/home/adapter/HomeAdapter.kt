@@ -6,8 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.edu.unisep.news_prg_dsm.R
 import br.edu.unisep.news_prg_dsm.databinding.ItemNewsBinding
-import br.edu.unisep.news_prg_dsm.domain.dto.ArticleDto
+import br.edu.unisep.news_prg_dsm.domain.dto.news.ArticleDto
 import com.bumptech.glide.Glide
+import java.time.format.DateTimeFormatter
 
 class HomeAdapter : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
 
@@ -46,7 +47,9 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
             bindingItem.tvTitle.text = article.title
             bindingItem.tvAuthor.text = article.author
             bindingItem.tvNews.text = article.description
-            bindingItem.tvPublishedDate.text = article.date
+
+            val dateFormater = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+            bindingItem.tvPublishedDate.text = article.date?.format(dateFormater)
 
             bindingItem.tvTitle.setOnClickListener { onTitleClick(article) }
 
