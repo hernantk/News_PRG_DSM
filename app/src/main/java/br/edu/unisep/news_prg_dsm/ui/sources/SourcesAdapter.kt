@@ -1,4 +1,4 @@
-package br.edu.unisep.news_prg_dsm.ui.sources.adapter
+package br.edu.unisep.news_prg_dsm.ui.sources
 
 import android.view.LayoutInflater
 import android.view.View

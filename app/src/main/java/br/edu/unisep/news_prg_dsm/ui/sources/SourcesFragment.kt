@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import br.edu.unisep.news_prg_dsm.R
 import br.edu.unisep.news_prg_dsm.databinding.FragmentSourcesBinding
 import br.edu.unisep.news_prg_dsm.domain.dto.news.SourcesDto
-import br.edu.unisep.news_prg_dsm.ui.sources.adapter.SourcesAdapter
 import br.edu.unisep.timesbooks.utils.*
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel

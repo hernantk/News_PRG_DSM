@@ -15,5 +15,6 @@
 
     <string name="title_score_football">0</string>
     <string name="title_team_football">FC Bragantino RB</string>
+    <string name="label_day_football">Jogo Marcado para: %s</string>
 
 </resources>

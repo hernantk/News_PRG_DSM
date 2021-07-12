@@ -1,5 +1,7 @@
 package br.edu.unisep.news_prg_dsm.domain.dto.news
 
+import java.time.LocalDate
+
 
 data class ArticleDto(
 
@@ -8,5 +10,5 @@ data class ArticleDto(
     val description: String?,
     val url: String?,
     val image: String?,
-    val date: String?
+    val date: LocalDate?
 )

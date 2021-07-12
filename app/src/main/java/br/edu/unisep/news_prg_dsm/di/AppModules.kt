@@ -7,9 +7,9 @@ import br.edu.unisep.news_prg_dsm.domain.repository.NewsRepository
 import br.edu.unisep.news_prg_dsm.ui.football.MatchHomeAdapter
 import br.edu.unisep.news_prg_dsm.ui.football.MatchHomeViewModel
 import br.edu.unisep.news_prg_dsm.ui.home.HomeViewModel
-import br.edu.unisep.news_prg_dsm.ui.home.adapter.HomeAdapter
+import br.edu.unisep.news_prg_dsm.ui.home.HomeAdapter
 import br.edu.unisep.news_prg_dsm.ui.sources.SourcesViewModel
-import br.edu.unisep.news_prg_dsm.ui.sources.adapter.SourcesAdapter
+import br.edu.unisep.news_prg_dsm.ui.sources.SourcesAdapter
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -31,8 +31,8 @@ val viewModelModule = module {
 }
 
 val adapterModule = module {
-    factory{HomeAdapter()}
-    factory{SourcesAdapter()}
+    factory{ HomeAdapter() }
+    factory{ SourcesAdapter() }
     factory { MatchHomeAdapter() }
 }
 

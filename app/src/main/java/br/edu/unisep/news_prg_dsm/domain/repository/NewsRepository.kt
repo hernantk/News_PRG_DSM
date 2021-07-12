@@ -3,6 +3,7 @@ package br.edu.unisep.news_prg_dsm.domain.repository
 import br.edu.unisep.news_prg_dsm.data.service.news.NewsService
 import br.edu.unisep.news_prg_dsm.domain.dto.news.ArticleDto
 import br.edu.unisep.news_prg_dsm.domain.dto.news.SourcesDto
+import java.time.LocalDate
 
 class NewsRepository(private val service: NewsService) {
 
@@ -18,7 +19,7 @@ class NewsRepository(private val service: NewsService) {
                     article.description,
                     article.url,
                     article.image,
-                    article.date
+                    LocalDate.parse(article.date?.removeRange(10,20))
             )
         }
     }
@@ -33,7 +34,7 @@ class NewsRepository(private val service: NewsService) {
                 article.description,
                 article.url,
                 article.image,
-                article.date
+                LocalDate.parse(article.date?.removeRange(10,20))
             )
         }
     }

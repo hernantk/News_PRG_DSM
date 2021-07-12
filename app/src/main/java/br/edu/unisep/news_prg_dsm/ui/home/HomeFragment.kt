@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import br.edu.unisep.news_prg_dsm.R
 import br.edu.unisep.news_prg_dsm.databinding.FragmentHomeBinding
 import br.edu.unisep.news_prg_dsm.domain.dto.news.ArticleDto
-import br.edu.unisep.news_prg_dsm.ui.home.adapter.HomeAdapter
 import br.edu.unisep.timesbooks.utils.*
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -83,7 +82,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupView() {
-        adapter.onTitleClick = ::onTitleClick
+        adapter.onTitleClick = ::onOpenInBrowserClick
 
         viewModel.getNews()
         binding.rvArticle.adapter = adapter
@@ -106,7 +105,7 @@ class HomeFragment : Fragment() {
 
     }
 
-    private fun onTitleClick(article : ArticleDto){
+    private fun onOpenInBrowserClick(article : ArticleDto){
         val intent = Intent(
                 Intent.ACTION_VIEW, Uri.parse(article.url)
         )

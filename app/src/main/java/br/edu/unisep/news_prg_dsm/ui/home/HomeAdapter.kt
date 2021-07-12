@@ -1,4 +1,4 @@
-package br.edu.unisep.news_prg_dsm.ui.home.adapter
+package br.edu.unisep.news_prg_dsm.ui.home
 
 import android.view.LayoutInflater
 import android.view.View
@@ -42,16 +42,17 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
 
 
 
-        fun bind(article: ArticleDto, onTitleClick: (ArticleDto) -> Unit) {
+        fun bind(article: ArticleDto, onOpenInBrowserClick: (ArticleDto) -> Unit) {
 
             bindingItem.tvTitle.text = article.title
             bindingItem.tvAuthor.text = article.author
             bindingItem.tvNews.text = article.description
 
+            val context = bindingItem.root.context
             val dateFormater = DateTimeFormatter.ofPattern("dd/MM/yyyy")
-            bindingItem.tvPublishedDate.text = article.date?.format(dateFormater)
+            bindingItem.tvPublishedDate.text = context.getString(R.string.label_published,article.date?.format(dateFormater).toString())
 
-            bindingItem.tvTitle.setOnClickListener { onTitleClick(article) }
+            bindingItem.tvOpenInBrowser.setOnClickListener { onOpenInBrowserClick(article) }
 
 
             Glide.with(itemView.context)
