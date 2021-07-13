@@ -21,6 +21,13 @@
         android:title="GoRound"
         app:showAsAction="always" />
 
+    <item
+        android:id="@+id/tvRound"
+        android:title="@string/label_round"
+        app:showAsAction="always">
+
+    </item>
+
 
 
 
