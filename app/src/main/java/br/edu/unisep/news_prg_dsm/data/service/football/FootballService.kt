@@ -1,6 +1,7 @@
 package br.edu.unisep.news_prg_dsm.data.service.football
 
-import br.edu.unisep.news_prg_dsm.data.remote.football.MatchList
+import br.edu.unisep.news_prg_dsm.data.remote.football.match.MatchList
+import br.edu.unisep.news_prg_dsm.data.remote.football.team.Team
 import br.edu.unisep.news_prg_dsm.data.service.*
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -15,5 +16,11 @@ interface FootballService {
         @Query(PARAM_MATCHDAY_FOOTBALL) round: Int,
         @Header(PARAM_API_KEY_FOOTBALL) apiKey: String = API_KEY_VALUE_FOOTBALL
     ): MatchList
+
+    @GET(WS_GET_LIST_TEAM)
+    suspend fun getTeam(
+        @Path(PARAM_ID) id: Int,
+        @Header(PARAM_API_KEY_FOOTBALL) apiKey: String = API_KEY_VALUE_FOOTBALL
+    ): Team
 
 }

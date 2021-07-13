@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/ItemBSA"
+        android:title="Brasileirão Serie A">
+
+    </item>
+
+
+    <item
+        android:id="@+id/actionBackwardRound"
+        android:icon="@drawable/ic_arrow_back_24"
+        android:title="BackRound"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/actionAdvanceRound"
+        android:icon="@drawable/ic_arrow_forward_24"
+        android:title="GoRound"
+        app:showAsAction="always" />
+
+
+
+
+
+</menu>

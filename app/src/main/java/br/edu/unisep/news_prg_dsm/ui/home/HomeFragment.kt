@@ -1,9 +1,12 @@
     package br.edu.unisep.news_prg_dsm.ui.home
 
+import android.app.SearchManager
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -37,6 +40,25 @@ class HomeFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu,inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_fragment_home,menu)
+        val manager = requireActivity().getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        val searchView = menu.findItem(R.id.actionSearch).actionView as SearchView
+
+        searchView.setSearchableInfo(manager.getSearchableInfo(requireActivity().componentName))
+
+        searchView.setOnQueryTextListener(object :SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                searchView.setQuery("",false)
+                viewModel.getNewsBySearch(query.toString())
+                searchView.hideKeyboard()
+                binding.rvArticle.scrollToPosition(0)
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+
+        })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,7 +69,6 @@ class HomeFragment : Fragment() {
 
 
     }
-
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
@@ -65,17 +86,7 @@ class HomeFragment : Fragment() {
             }
             R.id.technology -> {
                 viewModel.getNewsByCategory(NEWS_TECHNOLOGY)
-
             }
-            R.id.btnS ->{
-                if(binding.searchBar.visibility==View.VISIBLE){
-                    binding.searchBar.visibility = View.GONE
-                }
-                else{
-                    binding.searchBar.visibility = View.VISIBLE
-                }
-            }
-
         }
         binding.rvArticle.scrollToPosition(0)
         return true
@@ -87,7 +98,6 @@ class HomeFragment : Fragment() {
         viewModel.getNews()
         binding.rvArticle.adapter = adapter
         binding.rvArticle.layoutManager = LinearLayoutManager(requireContext())
-        binding.btnSearch.setOnClickListener{onSearchClick()}
     }
 
     private fun setupListeners() {
@@ -98,12 +108,6 @@ class HomeFragment : Fragment() {
     }
 
 
-    private fun onSearchClick(){
-        binding.tvSearch.hideKeyboard()
-        viewModel.getNewsBySearch(binding.tvSearch.text.toString())
-        binding.rvArticle.scrollToPosition(0)
-
-    }
 
     private fun onOpenInBrowserClick(article : ArticleDto){
         val intent = Intent(

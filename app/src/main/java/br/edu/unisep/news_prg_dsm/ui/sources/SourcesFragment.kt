@@ -40,7 +40,7 @@ class SourcesFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_fragment_home,menu)
+        inflater.inflate(R.menu.menu_fragment_sources,menu)
     }
 
 

@@ -1,8 +1,8 @@
 package br.edu.unisep.news_prg_dsm.domain.dto.football
 
-import br.edu.unisep.news_prg_dsm.data.remote.football.AwayTeam
-import br.edu.unisep.news_prg_dsm.data.remote.football.HomeTeam
-import br.edu.unisep.news_prg_dsm.data.remote.football.Score
+import br.edu.unisep.news_prg_dsm.data.remote.football.match.AwayTeam
+import br.edu.unisep.news_prg_dsm.data.remote.football.match.HomeTeam
+import br.edu.unisep.news_prg_dsm.data.remote.football.match.Score
 import java.time.LocalDate
 import java.time.LocalTime
 
