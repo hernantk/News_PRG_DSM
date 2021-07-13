@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import br.edu.unisep.news_prg_dsm.R
 import br.edu.unisep.news_prg_dsm.databinding.ItemMatchBinding
 import br.edu.unisep.news_prg_dsm.domain.dto.football.MatchDto
+import java.time.format.DateTimeFormatter
 
 class MatchHomeAdapter : RecyclerView.Adapter<MatchHomeAdapter.MatchViewHolder>(){
 
@@ -37,27 +38,44 @@ class MatchHomeAdapter : RecyclerView.Adapter<MatchHomeAdapter.MatchViewHolder>(
             binding.tvTeamTwo.text = match.awayTeam.name
             binding.tvScoreOne.text = match.score.fullTimeScore.homeTeamScore.toString()
             binding.tvScoreTwo.text = match.score.fullTimeScore.awayTeamScore.toString()
-            showScore(match)
+            setTextHourGame(match)
+
 
         }
 
-        private fun showScore(match: MatchDto){
-            when (match.score.fullTimeScore.homeTeamScore) {
-                null -> {
-                    binding.tvScoreOne.visibility=View.GONE
-                    binding.tvScoreTwo.visibility=View.GONE
-                    binding.tvGameOn.visibility=View.VISIBLE
-                }
-                else -> {
-                    binding.tvScoreOne.visibility=View.VISIBLE
-                    binding.tvScoreTwo.visibility=View.VISIBLE
-                    binding.tvGameOn.visibility=View.GONE
-                }
-            }
+
+
+
+
+        private fun setTextHourGame(match: MatchDto){
+            when (match.status) {
+                "SCHEDULED" -> {scheduled(match)}
+                "FINISHED" -> {finished()}
+                "ONGOING" ->{onGoing()}
+                else -> {scheduled(match)} } }
+
+
+        private fun finished(){
+                binding.tvHourGame.text = "Finalizado"
+                binding.tvScoreOne.visibility=View.VISIBLE
+                binding.tvScoreTwo.visibility=View.VISIBLE
         }
-    }
+        private fun onGoing(){
+            binding.tvHourGame.text = "Em Andamento"
+            binding.tvScoreOne.visibility=View.VISIBLE
+            binding.tvScoreTwo.visibility=View.VISIBLE
+        }
+        private fun scheduled(match: MatchDto){
+            val context = binding.root.context
+            val dateFormater = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+            binding.tvHourGame.text = context.getString(R.string.label_day_football,
+                match.date.format(dateFormater).toString(),
+                match.time.toString())
+            binding.tvScoreOne.visibility=View.GONE
+            binding.tvScoreTwo.visibility=View.GONE
+        }
 
 
 
-
+}
 }

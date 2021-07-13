@@ -8,13 +8,13 @@
 
     <string name="title_news">Titulo da Noticia</string>
     <string name="title_description_news">djsakldjsalkdjsakjdlkasjdlkasjlkdsajlkdjsalkdjsalkdjsalkdsakjdlksajdlksajdlksajdlksajdgfdgfdgfdgdfgdfgdfgfdgdfgfdgfdgdfgdffdgfdgdfgdfgfdgdf</string>
-    <string name="title_autor_news">Autor</string>
+    <string name="title_autor_news">Author</string>
     <string name="label_published">Publicado em : %s</string>
 
 
 
     <string name="title_score_football">0</string>
     <string name="title_team_football">FC Bragantino RB</string>
-    <string name="label_day_football">Jogo Marcado para: %s</string>
+    <string name="label_day_football">Jogo Marcado para: %s ás %s</string>
 
 </resources>

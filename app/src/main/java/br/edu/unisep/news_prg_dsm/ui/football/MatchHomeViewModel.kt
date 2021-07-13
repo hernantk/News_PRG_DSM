@@ -17,7 +17,7 @@ class MatchHomeViewModel(private val repository: FootballRepository) : ViewModel
 
     fun getMatches() {
         viewModelScope.launch {
-            val result = repository.getListMatch()
+            val result = repository.getListMatch(12)
             mMatches.postValue(result)
         }
     }

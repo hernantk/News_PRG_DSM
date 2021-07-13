@@ -9,4 +9,5 @@ const val WS_GET_LIST_COMPETITION =  "/v2/competitions/"
 const val WS_GET_LIST_MATCH = "/v2/competitions/{id}/matches"
 
 const val PARAM_API_KEY_FOOTBALL = "X-Auth-Token"
+const val PARAM_MATCHDAY_FOOTBALL = "matchday"
 const val PARAM_ID = "id"
