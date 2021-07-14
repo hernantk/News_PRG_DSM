@@ -20,8 +20,8 @@ class MatchHomeFragment : Fragment() {
     }
 
     private val viewModel: MatchHomeViewModel by viewModel()
-
     private val adapter: MatchHomeAdapter by inject()
+    private var competition:String = "BSA"
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -40,20 +40,18 @@ class MatchHomeFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_football,menu)
-        menu.findItem(R.id.tvRound).title=requireContext().getString(R.string.label_round,getRound().toString())
     }
 
     private fun setupView() {
         binding.rvMatches.adapter = adapter
         binding.rvMatches.layoutManager = LinearLayoutManager(requireContext())
-        binding.srlMatches.setOnRefreshListener { viewModel.getMatches(getRound()) }
+        binding.srlMatches.setOnRefreshListener { getRound() }
 
     }
 
     private fun setupListeners() {
         viewModel.matches.observe(viewLifecycleOwner,::onMatchesResult)
-
-        viewModel.getMatches(Preferences.getRound())
+        getRound()
     }
 
     private fun onMatchesResult(article: List<MatchDto>){
@@ -65,21 +63,29 @@ class MatchHomeFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.actionBackwardRound -> {
-                Preferences.setRoundBackward()
-                viewModel.getMatches(getRound())
+                Preferences.setRoundBackward(competition)
+                getRound()
             }
             R.id.actionAdvanceRound -> {
-                Preferences.setRoundForward()
-                viewModel.getMatches(getRound())
+                Preferences.setRoundForward(competition)
+                getRound()
+            }
+            R.id.ItemBSA->{
+                competition=FOOTBALL_BSA
+                getRound()
+
+            }
+            R.id.ItemCLI->{
+                competition=FOOTBALL_CLI
+                getRound()
             }
         }
         return true
     }
 
 
-    private fun getRound():Int{
-        return Preferences.getRound()
+    private fun getRound(){
+        viewModel.getMatches(competition,Preferences.getRound(competition).toString())
     }
-
 
 }

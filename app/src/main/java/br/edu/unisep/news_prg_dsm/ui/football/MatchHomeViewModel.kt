@@ -15,9 +15,9 @@ class MatchHomeViewModel(private val repository: FootballRepository) : ViewModel
     val matches : LiveData<List<MatchDto>>
     get() = mMatches
 
-    fun getMatches(round:Int) {
+    fun getMatches(competition:String,round:String) {
         viewModelScope.launch {
-            val result = repository.getListMatch(round)
+            val result = repository.getListMatch(competition,round)
             mMatches.postValue(result)
         }
     }

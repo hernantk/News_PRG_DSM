@@ -52,6 +52,7 @@ class MatchHomeAdapter : RecyclerView.Adapter<MatchHomeAdapter.MatchViewHolder>(
                 "SCHEDULED" -> {scheduled(match)}
                 "FINISHED" -> {finished()}
                 "ONGOING" ->{onGoing()}
+                "POSTPONED" ->{postponed()}
                 else -> {scheduled(match)} } }
 
 
@@ -71,6 +72,11 @@ class MatchHomeAdapter : RecyclerView.Adapter<MatchHomeAdapter.MatchViewHolder>(
             binding.tvHourGame.text = context.getString(R.string.label_day_football,
                 match.date.format(dateFormater).toString(),
                 match.time.toString())
+            binding.tvScoreOne.visibility=View.GONE
+            binding.tvScoreTwo.visibility=View.GONE
+        }
+        private fun postponed(){
+            binding.tvHourGame.text = "Jogo Adiado Sem Data Definida"
             binding.tvScoreOne.visibility=View.GONE
             binding.tvScoreTwo.visibility=View.GONE
         }

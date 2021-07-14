@@ -8,8 +8,8 @@ import java.time.LocalTime
 class FootballRepository(private val service: FootballService) {
 
 
-    suspend fun getListMatch(round :Int): List<MatchDto> {
-        val response = service.getListMatch("BSA",round)
+    suspend fun getListMatch(competition:String,round :String): List<MatchDto> {
+        val response = service.getListMatch(competition,round)
 
         return response.matches.map { match ->
             MatchDto(

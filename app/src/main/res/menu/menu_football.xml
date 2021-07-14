@@ -5,7 +5,10 @@
     <item
         android:id="@+id/ItemBSA"
         android:title="Brasileirão Serie A">
-
+    </item>
+    <item
+        android:id="@+id/ItemCLI"
+        android:title="Copa Libertadores">
     </item>
 
 
@@ -21,12 +24,6 @@
         android:title="GoRound"
         app:showAsAction="always" />
 
-    <item
-        android:id="@+id/tvRound"
-        android:title="@string/label_round"
-        app:showAsAction="always">
-
-    </item>
 
 
 
