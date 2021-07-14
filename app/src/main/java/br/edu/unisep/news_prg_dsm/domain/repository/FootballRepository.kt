@@ -10,21 +10,19 @@ import java.time.LocalDate
 import java.time.LocalTime
 
 class FootballRepository(private val service: FootballService) {
-
-
-    private var mresponse :MatchList? = null
+    private var mResponse :MatchList? = null
     private var response: List<Match>? = null
-
 
     suspend fun getListMatch(competition:String,round :Int): List<MatchDto> {
 
-        if(mresponse==null || competition== FOOTBALL_CLI){
-            mresponse = service.getListMatch(competition)
-            response = mresponse!!.matches
+        if(mResponse==null){
+            mResponse = service.getListMatch(competition)
         }
-        else if(mresponse==null || competition== FOOTBALL_BSA) {
-            mresponse = service.getListMatch(competition)
-            response = mresponse!!.matches.filter { match -> match.round == round }
+        if(competition==FOOTBALL_BSA){
+            response = mResponse!!.matches.filter { match -> match.round == round }
+        }
+        else if (competition==FOOTBALL_CLI){
+            TODO()
         }
 
 

@@ -8,5 +8,5 @@ data class Match(
     @field:Json(name = "score") val score: Score,
     @field:Json(name = "utcDate") val dateAndTime: String,
     @field:Json(name = "status") val status: String,
-    @field:Json(name = "matchday") val round: Int,
+    @field:Json(name = "matchday") val round: Int?,
 )
