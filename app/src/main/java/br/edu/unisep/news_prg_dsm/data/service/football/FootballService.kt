@@ -12,8 +12,7 @@ interface FootballService {
 
     @GET(WS_GET_LIST_MATCH)
     suspend fun getListMatch(
-        @Path(PARAM_ID) competition: String,
-        @Query(PARAM_MATCHDAY_FOOTBALL) round: String,
+        @Path(PARAM_ID) competition: String?,
         @Header(PARAM_API_KEY_FOOTBALL) apiKey: String = API_KEY_VALUE_FOOTBALL
     ): MatchList
 

@@ -10,12 +10,11 @@ import kotlinx.coroutines.launch
 
 class MatchHomeViewModel(private val repository: FootballRepository) : ViewModel() {
 
-
     private val mMatches: MutableLiveData<List<MatchDto>> = MutableLiveData()
     val matches : LiveData<List<MatchDto>>
     get() = mMatches
 
-    fun getMatches(competition:String,round:String) {
+    fun getMatches(competition:String,round:Int) {
         viewModelScope.launch {
             val result = repository.getListMatch(competition,round)
             mMatches.postValue(result)

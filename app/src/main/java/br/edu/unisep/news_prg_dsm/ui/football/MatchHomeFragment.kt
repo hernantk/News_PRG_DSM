@@ -21,7 +21,7 @@ class MatchHomeFragment : Fragment() {
 
     private val viewModel: MatchHomeViewModel by viewModel()
     private val adapter: MatchHomeAdapter by inject()
-    private var competition:String = "BSA"
+    private var competition:String = FOOTBALL_BSA
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -85,7 +85,7 @@ class MatchHomeFragment : Fragment() {
 
 
     private fun getRound(){
-        viewModel.getMatches(competition,Preferences.getRound(competition).toString())
+        viewModel.getMatches(competition,Preferences.getRound(competition))
     }
 
 }
