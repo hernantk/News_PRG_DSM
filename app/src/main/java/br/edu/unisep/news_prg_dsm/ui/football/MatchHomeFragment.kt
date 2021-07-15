@@ -45,47 +45,48 @@ class MatchHomeFragment : Fragment() {
     private fun setupView() {
         binding.rvMatches.adapter = adapter
         binding.rvMatches.layoutManager = LinearLayoutManager(requireContext())
-        binding.srlMatches.setOnRefreshListener { getRound() }
+        binding.srlMatches.setOnRefreshListener { viewModel.getMatches(competition) }
 
     }
 
     private fun setupListeners() {
         viewModel.matches.observe(viewLifecycleOwner,::onMatchesResult)
-        getRound()
+        viewModel.getMatches(competition)
     }
 
     private fun onMatchesResult(article: List<MatchDto>){
-        adapter.matches = article
+        adapter.round = Preferences.getRound(competition)
+        adapter.mMatches = article
+        adapter.setNewData()
         binding.srlMatches.isRefreshing = false
-
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.actionBackwardRound -> {
                 Preferences.setRoundBackward(competition)
-                getRound()
+                setRoundAdapter()
             }
             R.id.actionAdvanceRound -> {
                 Preferences.setRoundForward(competition)
-                getRound()
+                setRoundAdapter()
             }
             R.id.ItemBSA->{
                 competition=FOOTBALL_BSA
-                getRound()
 
             }
             R.id.ItemCLI->{
                 competition=FOOTBALL_CLI
-                getRound()
             }
         }
+
         return true
     }
 
-
-    private fun getRound(){
-        viewModel.getMatches(competition,Preferences.getRound(competition))
+    private fun setRoundAdapter(){
+        adapter.round=Preferences.getRound(competition)
+        adapter.setNewData()
     }
+
 
 }

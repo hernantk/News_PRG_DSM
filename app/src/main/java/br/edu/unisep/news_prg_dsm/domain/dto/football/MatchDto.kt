@@ -13,5 +13,6 @@ data class MatchDto(
     val date: LocalDate,
     val time: LocalTime,
     val status: String,
+    val round: Int?,
 )
 

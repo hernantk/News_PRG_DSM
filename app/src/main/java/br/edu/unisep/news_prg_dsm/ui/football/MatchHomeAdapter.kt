@@ -7,15 +7,15 @@ import androidx.recyclerview.widget.RecyclerView
 import br.edu.unisep.news_prg_dsm.R
 import br.edu.unisep.news_prg_dsm.databinding.ItemMatchBinding
 import br.edu.unisep.news_prg_dsm.domain.dto.football.MatchDto
+import br.edu.unisep.news_prg_dsm.domain.dto.news.ArticleDto
 import java.time.format.DateTimeFormatter
 
 class MatchHomeAdapter : RecyclerView.Adapter<MatchHomeAdapter.MatchViewHolder>(){
 
-    var matches: List<MatchDto> = listOf()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
+    var round: Int = 1
+
+    var mMatches: List<MatchDto> = listOf()
+    private var matches: List<MatchDto> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MatchViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_match, parent, false)
@@ -27,6 +27,11 @@ class MatchHomeAdapter : RecyclerView.Adapter<MatchHomeAdapter.MatchViewHolder>(
     }
 
     override fun getItemCount() = matches.size
+
+    fun setNewData(){
+        matches = mMatches.filter { matchDto -> matchDto.round == round }
+        notifyDataSetChanged()
+    }
 
 
     inner class MatchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.edu.unisep.news_prg_dsm.domain.dto.football.MatchDto
 import br.edu.unisep.news_prg_dsm.domain.repository.FootballRepository
+import br.edu.unisep.timesbooks.utils.FOOTBALL_BSA
+import br.edu.unisep.timesbooks.utils.FOOTBALL_CLI
 import kotlinx.coroutines.launch
 
 class MatchHomeViewModel(private val repository: FootballRepository) : ViewModel() {
@@ -14,11 +16,13 @@ class MatchHomeViewModel(private val repository: FootballRepository) : ViewModel
     val matches : LiveData<List<MatchDto>>
     get() = mMatches
 
-    fun getMatches(competition:String,round:Int) {
+
+
+
+    fun getMatches(competition:String) {
         viewModelScope.launch {
-            val result = repository.getListMatch(competition,round)
-            mMatches.postValue(result)
+                val result = repository.getListMatch(competition)
+                mMatches.postValue(result)
+            }
         }
     }
-
-}
