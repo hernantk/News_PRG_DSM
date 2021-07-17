@@ -1,5 +1,6 @@
 package br.edu.unisep.timesbooks.utils
 
+import android.net.Uri
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.SearchView
@@ -32,6 +33,11 @@ fun SearchView.hideKeyboard() {
         InputMethodManager.RESULT_UNCHANGED_SHOWN
     )
     
+}
+
+
+fun getImage(id :Int) : Uri? {
+    return Uri.parse("https://crests.football-data.org/${id}.svg")
 }
 
 

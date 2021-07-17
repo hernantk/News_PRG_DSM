@@ -73,10 +73,11 @@ class MatchHomeFragment : Fragment() {
             }
             R.id.ItemBSA->{
                 competition=FOOTBALL_BSA
-
+                viewModel.getMatches(competition)
             }
             R.id.ItemCLI->{
                 competition=FOOTBALL_CLI
+                viewModel.getMatches(competition)
             }
         }
 
