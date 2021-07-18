@@ -46,7 +46,6 @@ class MatchHomeFragment : Fragment() {
         binding.rvMatches.adapter = adapter
         binding.rvMatches.layoutManager = LinearLayoutManager(requireContext())
         binding.srlMatches.setOnRefreshListener { viewModel.getMatches(competition) }
-
     }
 
     private fun setupListeners() {

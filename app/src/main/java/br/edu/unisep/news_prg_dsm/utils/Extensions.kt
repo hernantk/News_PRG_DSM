@@ -15,9 +15,11 @@ const val NEWS_TECHNOLOGY = "technology"
 
 
 const val FOOTBALL_BSA = "BSA"
+const val FOOTBALL_BSA_ROUNDs = 38
 const val FOOTBALL_CLI = "CLI"
+const val FOOTBALL_CLI_ROUNDs = 6
 
-const val DEFAULT_ROUND = 2
+const val DEFAULT_ROUND = 1
 
 
 
