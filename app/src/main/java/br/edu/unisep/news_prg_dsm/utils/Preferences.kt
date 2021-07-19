@@ -6,8 +6,6 @@ import br.edu.unisep.timesbooks.utils.*
 
 object Preferences {
 
-
-
     private lateinit var preferences: SharedPreferences
 
     fun initialize(context: Context){
@@ -24,13 +22,12 @@ object Preferences {
             roundNumber = FOOTBALL_BSA_ROUNDs
         }
         else if(competition== FOOTBALL_CLI && roundNumber== FOOTBALL_CLI_ROUNDs){
-            roundNumber = FOOTBALL_CLI_ROUNDs
-        }
+            roundNumber = FOOTBALL_CLI_ROUNDs}
 
 
         when(competition){
-            FOOTBALL_BSA -> if(roundNumber== FOOTBALL_BSA_ROUNDs){roundNumber = FOOTBALL_BSA_ROUNDs}
-            FOOTBALL_CLI -> if(roundNumber== FOOTBALL_CLI_ROUNDs){roundNumber = FOOTBALL_CLI_ROUNDs}
+            FOOTBALL_BSA -> if(roundNumber> FOOTBALL_BSA_ROUNDs){roundNumber = FOOTBALL_BSA_ROUNDs}
+            FOOTBALL_CLI -> if(roundNumber> FOOTBALL_CLI_ROUNDs){roundNumber = FOOTBALL_CLI_ROUNDs}
         }
         preferences.edit().putInt("round-${competition}",roundNumber).apply() }
 
@@ -38,7 +35,7 @@ object Preferences {
 
     fun setRoundBackward(competition:String){
         var roundNumber = preferences.getInt("round-${competition}",DEFAULT_ROUND) - 1
-        if(roundNumber==1){
+        if(roundNumber<1){
             roundNumber = DEFAULT_ROUND
         }
         preferences.edit().putInt("round-${competition}",roundNumber).apply() }
