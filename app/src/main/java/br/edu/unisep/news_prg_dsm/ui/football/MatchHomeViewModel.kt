@@ -12,6 +12,8 @@ import kotlinx.coroutines.launch
 
 class MatchHomeViewModel(private val repository: FootballRepository) : ViewModel() {
 
+    var competition:String = FOOTBALL_BSA
+
     private val mMatches: MutableLiveData<List<MatchDto>> = MutableLiveData()
     val matches : LiveData<List<MatchDto>>
     get() = mMatches

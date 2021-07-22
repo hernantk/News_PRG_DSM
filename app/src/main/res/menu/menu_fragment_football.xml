@@ -3,6 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/tvRound"
+        android:title="@string/label_round"
+        app:showAsAction="always" />
+
+    <item
         android:id="@+id/ItemBSA"
         android:title="Brasileirão Serie A">
     </item>
@@ -23,6 +28,7 @@
         android:icon="@drawable/ic_arrow_forward_24"
         android:title="GoRound"
         app:showAsAction="always" />
+
 
 
 

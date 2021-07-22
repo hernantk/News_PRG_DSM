@@ -1,9 +1,7 @@
 package br.edu.unisep.news_prg_dsm.ui.football
 
 import android.net.Uri
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.recyclerview.widget.RecyclerView
 import br.edu.unisep.news_prg_dsm.MainActivity
 import br.edu.unisep.news_prg_dsm.R
@@ -14,10 +12,13 @@ import br.edu.unisep.timesbooks.utils.getImage
 import com.bumptech.glide.Glide
 import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
 import java.time.format.DateTimeFormatter
+import kotlin.coroutines.coroutineContext
 
 class MatchHomeAdapter : RecyclerView.Adapter<MatchHomeAdapter.MatchViewHolder>(){
 
     var round: Int = 1
+
+    lateinit var roundItem : MenuItem
 
     var mMatches: List<MatchDto> = listOf()
     private var matches: List<MatchDto> = listOf()
@@ -36,12 +37,16 @@ class MatchHomeAdapter : RecyclerView.Adapter<MatchHomeAdapter.MatchViewHolder>(
     fun setNewData(){
         matches = mMatches.filter { matchDto -> matchDto.round == round }
         notifyDataSetChanged()
+        roundItem.setTitle("Rodada: $round").toString()
     }
+
+
 
 
     inner class MatchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private val binding = ItemMatchBinding.bind(itemView)
+
 
         fun bind(match: MatchDto) {
             binding.tvTeamHome.text = match.homeTeam.name

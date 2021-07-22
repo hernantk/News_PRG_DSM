@@ -35,7 +35,7 @@ object Preferences {
 
     fun setRoundBackward(competition:String){
         var roundNumber = preferences.getInt("round-${competition}",DEFAULT_ROUND) - 1
-        if(roundNumber<1){
+        if(roundNumber<DEFAULT_ROUND){
             roundNumber = DEFAULT_ROUND
         }
         preferences.edit().putInt("round-${competition}",roundNumber).apply() }

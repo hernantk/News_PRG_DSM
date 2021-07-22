@@ -26,7 +26,7 @@ class HomeViewModel(private val repository :NewsRepository) : ViewModel() {
 
     fun getNewsBySearch(search:String) {
         viewModelScope.launch {
-            val result = repository.getNewsBySearch(search)
+            val result = repository.getNewsBySearch("+${search}")
 
             mnewsResult.postValue(result)
         }

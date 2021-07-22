@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import br.edu.unisep.news_prg_dsm.R
 import br.edu.unisep.news_prg_dsm.databinding.FragmentFootballBinding
 import br.edu.unisep.news_prg_dsm.domain.dto.football.MatchDto
-import br.edu.unisep.news_prg_dsm.domain.dto.news.ArticleDto
 import br.edu.unisep.news_prg_dsm.utils.Preferences
 import br.edu.unisep.timesbooks.utils.*
 import org.koin.android.ext.android.inject
@@ -39,7 +38,8 @@ class MatchHomeFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_football,menu)
+        inflater.inflate(R.menu.menu_fragment_football,menu)
+        adapter.roundItem = menu.findItem(R.id.tvRound)
     }
 
     private fun setupView() {
